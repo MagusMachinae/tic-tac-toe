@@ -20,7 +20,7 @@
 (some #{(repeat 3 :o)} (mapv (fn [matrix] (mapv #(get-in diag-x %) matrix)) [left-diag right-diag]))
 ;(mapv (fn [row] (filterv (fn [space] (= player space)) row)) board)
 
-(defn columns-vectors
+(defn column-vectors
   "transposes board to get column vectors"
   [board]
   (apply mapv vector board))
@@ -37,7 +37,7 @@
   [board player]
   (if (= (repeat 3 player)
          (some #{(repeat 3 player)} (concat board
-                                     (columns-vectors board)
+                                     (column-vectors board)
                                      (diag-vectors board))))
     true
     false))
