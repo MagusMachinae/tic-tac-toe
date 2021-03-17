@@ -64,6 +64,6 @@
   [board x y]
   (let [updated-board (update-in board [x y] (fn [_] :o))]
     (if (or (winner? updated-board :o) (draw? updated-board))
-      {:board updated-board :state (analyse board)}
+      {:board updated-board :state (analyse updated-board)}
       (let [computer-moved (rand-nth (next-moves updated-board :x))]
-        {:board computer-moved :state (analyse board)}))))
+        {:board computer-moved :state (analyse computer-moved)}))))
